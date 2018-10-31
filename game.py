@@ -46,6 +46,16 @@ class Card:
 
 class Game:
 
+	def messagePlayers(self, currentPlayer, currentPlayerMessage="", opponentMessage="",):
+		for player in self.players:
+			if player == currentPlayer:
+				pass # send player message through connection object on player?
+			else:
+				pass # print opponent message to all other palyers
+
+	def messageAllPlayers(self, message):
+		pass
+
 	def getOpponentFromPrompt(self, yourself, prompt):
 		while True:
 			name = input(prompt)
@@ -131,11 +141,12 @@ class Game:
 	def princessAction(self, player):
 		self.playerLoses(player)
 
-	def __init__(self):
+	def __init__(self, connections):
 		self.heartsNeededToWin = 7
 		self.deck = None
 		self.players = []
 		self.score = {}
+		self.connections = connections
 
 	def addPlayer(self, name):
 		self.players.append(Player(name))
@@ -249,7 +260,7 @@ class Game:
 			newCard.action(self, player)
 
 
-game = Game()
+game = Game([])
 game.setUpGames()
 
 
